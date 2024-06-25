@@ -1,11 +1,10 @@
 package main
 
 import (
-	"order/web"
+	"order/mappings"
 )
 
 func main() {
-	r := web.SetupRouter()
-	r = web.PostOrder(r)
-	r.Run(":8080")
+	mappings.CreateUrlMappings()
+	mappings.Router.Run(":8080")
 }

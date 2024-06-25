@@ -5,14 +5,15 @@ import (
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
+	"order/controllers"
+	"order/mappings"
 	"order/model"
-	"order/web"
 	"strings"
 	"testing"
 )
 
 func TestPingRoute(t *testing.T) {
-	router := web.SetupRouter()
+	router := controllers.SetupRouter()
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/ping", nil)
@@ -24,9 +25,8 @@ func TestPingRoute(t *testing.T) {
 
 // Test for POST /order/add
 func TestPostUser(t *testing.T) {
-	router := web.SetupRouter()
-	router = web.PostOrder(router)
-
+	mappings.CreateUrlMappings()
+	router := mappings.Router
 	w := httptest.NewRecorder()
 
 	// Create an example order for testing
@@ -35,7 +35,7 @@ func TestPostUser(t *testing.T) {
 		Symbol:    "BTCUSDT",
 	}
 	userJson, _ := json.Marshal(exampleUser)
-	req, _ := http.NewRequest("POST", "/order/add", strings.NewReader(string(userJson)))
+	req, _ := http.NewRequest("POST", "/v1/order/add", strings.NewReader(string(userJson)))
 	router.ServeHTTP(w, req)
 
 	assert.Equal(t, 200, w.Code)
