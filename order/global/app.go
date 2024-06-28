@@ -1,8 +1,8 @@
 package global
 
 import (
-	"github.com/jassue/jassue-gin/config"
 	"github.com/spf13/viper"
+	"order/config"
 )
 
 type Application struct {
