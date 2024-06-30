@@ -3,3 +3,4 @@ app: # 应用基本配置
   port: 8888 # 服务监听端口号
   app_name: order # 应用名称
   app_url: http://localhost # 应用域名
+  data_source: root:123456@tcp(localhost:3306)/exchange

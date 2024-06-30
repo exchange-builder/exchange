@@ -1,8 +1,9 @@
 package config
 
 type App struct {
-	Env     string `mapstructure:"env" json:"env" yaml:"env"`
-	Port    string `mapstructure:"port" json:"port" yaml:"port"`
-	AppName string `mapstructure:"app_name" json:"app_name" yaml:"app_name"`
-	AppUrl  string `mapstructure:"app_url" json:"app_url" yaml:"app_url"`
+	Env        string `mapstructure:"env" json:"env" yaml:"env"`
+	Port       string `mapstructure:"port" json:"port" yaml:"port"`
+	AppName    string `mapstructure:"app_name" json:"app_name" yaml:"app_name"`
+	AppUrl     string `mapstructure:"app_url" json:"app_url" yaml:"app_url"`
+	DataSource string `mapstructure:"data_source" json:"data_source" yaml:"data_source"`
 }

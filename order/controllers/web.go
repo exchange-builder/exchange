@@ -10,6 +10,7 @@ import (
 	"github.com/teris-io/shortid"
 	"log"
 	"net/http"
+	"order/global"
 	"order/model"
 	"os"
 	"time"
@@ -30,7 +31,7 @@ func init() {
 
 }
 func initDb() *gorp.DbMap {
-	db, err := sql.Open("mysql", "root:123456@tcp(localhost:3306)/exchange")
+	db, err := sql.Open("mysql", global.App.Config.App.DataSource)
 	checkErr(err, "sql.Open failed")
 	dbmap := &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{"InnoDB", "UTF8"}}
 	dbmap.AddTableWithName(model.OrderDto{}, "ex_order").SetKeys(true, "Id")
